@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppContact.Views.ContactPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+                
+                <Label Text="Nombre"></Label>
+                
+                <Entry Placeholder="Ingresar Nombre"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding CurrentContacto.Nombre}"></Entry>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Telefono"></Label>
+
+                <Entry Placeholder="Ingresar Telefono"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding CurrentContacto.Telefono}"></Entry>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Direccion"></Label>
+
+                <Entry Placeholder="Ingresar Direccion"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding CurrentContacto.Direccion}"></Entry>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Notas"></Label>
+                <Editor HeightRequest="200"></Editor>
+
+            </StackLayout>
+
+            <StackLayout>
+
+                <Button Text="Guardar"
+                        Command="{Binding SaveCurrentContacto}"/>
+                <Button Text="Eliminar" />
+
+            </StackLayout> 
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

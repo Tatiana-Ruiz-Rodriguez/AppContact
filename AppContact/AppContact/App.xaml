@@ -4,7 +4,16 @@
              x:Class="AppContact.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ContentPage.ToolbarItems>
 
+            <ToolbarItem
+                Text="Agregar"
+                Order="Primary"
+                Command="{Binding AddContactCommand}">
+                
+            </ToolbarItem>
+            
+        </ContentPage.ToolbarItems>
+        <ListView></ListView>
 	</Application.Resources>
 </Application>
