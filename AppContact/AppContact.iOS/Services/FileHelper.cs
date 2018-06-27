@@ -1,14 +1,14 @@
-﻿using AppContact.iOS.Services;
-
+﻿using AppContacts.iOS.Services;
+using AppContacts.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Xamarin.Forms;
-using AppContact.Services;
+
 
 [assembly: Dependency(typeof(FileHelper))]
-namespace AppContact.iOS.Services
+namespace AppContacts.iOS.Services
 {
     public class FileHelper : IFileHelper
     {

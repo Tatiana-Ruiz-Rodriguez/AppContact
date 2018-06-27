@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AppContact.Models
+﻿namespace AppContact.Models
 {
     using SQLite;
 

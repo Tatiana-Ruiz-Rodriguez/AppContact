@@ -6,10 +6,7 @@ using AppContact.Models;
 namespace AppContact.Data
 {
     using SQLite;
-    using System.Collections.ObjectModel;
-    using System.Linq;
     using System.Threading.Tasks;
-    using AppContact.Helpers;
 
     public class ContactsDataBase
     {
@@ -54,29 +51,5 @@ namespace AppContact.Data
 
         }
 
-        public async 
-            Task<ObservableCollection
-            <IGrouping<string, Contact>>>
-            GetAllGrouped()
-        {
-            List<Contact> contacts = await App.DataBase().GetItemsAsync();
-
-            IEnumerable<Grouping<string, Contact>> sorted = new Grouping<string, Contact>[0];
-            if (contacts != null)
-            {
-                sorted =
-                from f in contacts
-                orderby f.Nombre
-                group f by f.Nombre[0].ToString()
-                into theGroup
-                select
-                new Grouping<string, Contact>
-                (theGroup.Key, theGroup);
-            }
-            return new
-                ObservableCollection
-                <Grouping<string, Contact>>(sorted);
-        }
-    
     }
 }

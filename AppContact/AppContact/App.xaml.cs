@@ -1,65 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AppContact.Views;
-
-using Xamarin.Forms;
-
-namespace AppContact
+﻿namespace AppContact
 {
-    using AppContact.Data;
-    using AppContacts.Services;
+    using System;
     using System.Diagnostics;
+    using Xamarin.Forms;
+    using AppContact.Data;
+    using AppContact.Views;
+    using AppContacts.Services;
 
-	public partial class App : Application
-	{
+    public partial class App : Application
+    {
+        private static ContactsDataBase database;
 
-        private ContactsDataBase dataBase;
-
-        public ContactsDataBase DataBase
+        public static ContactsDatabase Database
         {
             get
             {
-
-                if(dataBase == null){
-
+                if (database == null)
+                {
                     try
                     {
-                        dataBase = new ContactsDataBase(DependencyService.Get<IFileHelper>()
-                            .GetLocalFilePath("Contacts.db3"));
+                        database = new ContactsDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("contacts.db3"));
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(ex.Message); 
+                        Debug.WriteLine(ex.Message);
                     }
+
                 }
-
-                return dataBase;
+                return database;
             }
+
+            set { Database = value; }
         }
 
 
-        public App ()
-		{
-			InitializeComponent();
-
-			MainPage = new NavigationPage(new ContactPage());
+        public App()
+        {
+            InitializeComponent();
+            MainPage = new NavigationPage(new ContactsPage());
         }
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
+    }
 }

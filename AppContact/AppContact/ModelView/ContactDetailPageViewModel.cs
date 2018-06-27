@@ -1,40 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using AppContact.Models;
-using Xamarin.Forms;
-
-namespace AppContact.ModelView
+﻿namespace AppContact.ModelView
 {
+    using System.Threading.Tasks;
+    using Xamarin.Forms;
+    using AppContact.Models;
+
     public class ContactDetailPageViewModel
     {
-
-        public Command  CurrentContacto { get; set; }
+        public Contact CurrentContact { get; set; }
         public Command SaveContactCommand { get; set; }
         public Command DeleteContactCommand { get; set; }
         public INavigation Navigation { get; set; }
-
-        public ContactDetailPageViewModel(INavigation navigation) {
-
-            this.Navigation = navigation;
-            CurrentContacto = new Contact();
-            SaveContactCommand = new Command(async() => await SaveContact);
-            DeleteContactCommand = new Command(async() => await DeleteContact)
-
+        
+        public ContactDetailPageViewModel(INavigation navigation)
+        {
+            Navigation = navigation;
+            CurrentContact = new Contact();
+            SaveContactCommand = new Command(async () => await SaveContact());
         }
 
-        private async Task SaveContact()
+        public async Task SaveContact()
         {
-            await (App.DataBase.SaveItemAsync(CurrentContacto));
+            await App.Database.SaveItemAsync(CurrentContact);
             await Navigation.PopToRootAsync();
         }
-
-        private async Task DeleteContact()
-        {
-            await (App.DataBase.DeleteItemAsync(CurrentContacto));
-            await Navigation.PopToRootAsync();
-        }
-
     }
+
+   
+    
 }
